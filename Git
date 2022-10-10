@@ -5,7 +5,7 @@
   # git bash here
   
   - git init
-  - git add .
+  - git add . (Adiciona todos os arquivos)    - git add nome_do_arquivo (Adiciona somente o arquivo desejado)
   - git commit -m "Mensagem Explicativa"
   - git branch -M main // Para que os commits sejam enviados para a branch Main
   Caso esteja usando SSH:
@@ -15,12 +15,125 @@
   git push -u origin main // Isso na primeira vez que será realizado um push, nas próximas basta utilizar o comando git push
   
   
-
 ----------------- CLONAR E MODIFICAR UM PROJETO/REPOSITÓRIO QUE VOCÊ TEM PERMISSÃO PARA ALTERAR
 
   Caso tenha feito a configuração da chave SSH, utilizar da seguinte forma: (Caso não tenha feito copiar o link normalmente)
   - git clone git@github.com:seuusuario/seurepositorio.git
-  - git add .
-  - git commit -m "Mensagem Explicativa"
-  - git push
+
+---------------- ATUALIZAR REPOSITÓRIO LOCAL EM RELAÇÃO AO REMOTO    /    ERRO AO UTILIZAR GIT PUSH
+
+  - git pull <nome_do_remote> <nome_do_branch>   // git pull origin main
   
+  OBS: Isso é bastante recorrente quando tentamos fazer um push novo para o GitHub, mas o nosso repósito local está divergente do repositório do GitHub,
+então isso gerará um erro. Por isso é importante sempre manter o repositório local atualizado em relação ao GitHub.
+
+
+---------------- COMO SOBRESCREVER UM HISTÓRICO NO GIT HUB
+
+  git push -f <nome_do_remote> <nome_do_branch>
+  
+  Isso ocorre nos casos em que realizamos um push mas o nosso repositório local está desatualizado em relação ao do github, logo, deveríamos ter feito
+um pull para que nosso projeto estivesse em acordo com o do github. Mas nós podemos utilizar o -f para ignorar essa divergência e realizar o push de
+todo jeito. ATENÇÃO: É UMA AÇÃO PERIGOSA.
+  
+  Por exemplo, voltar o projeto com 10 commits para o terceiro commit.
+  
+  git log --oneline
+  Copio o código do commit que desejo voltar
+  git reset --hard <codigo>
+  git push -f    // Esse git push irá forçar o push de qualquer forma, mesmo sendo uma ação "destrutiva"
+  
+  
+----------------- VERIFICAR O HISTÓRICO DE VERSÕES
+
+  - git log
+  - git log --oneline
+
+
+---------------- REMOVER ARQUIVOS DA ÁREA DE STAGE
+
+>>> Quando utilizamos o comando git add . nós colocamos os arquivos em um stage, prontos para serem "commitados", caso eu tenha adicionado sem querer e queira
+desfazer esta ação, basta utilizar o comando:
+  - git status
+  - git reset
+  
+  
+---------------- VERIFICAR AS DIFERENÇAS/ALTERAÇÕES FEITAS NO ARQUIVO ATUAL PARA O ÚLTIMO COMMIT
+
+  - git diff nome_do_arquivo
+  
+  
+---------------- VOLTAR PARA COMMITS ANTIGOS 
+    
+    - git checkout cod_do_commit (pode ser visto utilizando o comando git log / git log --oneline)
+    
+    Depois, para retornar ao último commit:
+    - git checkout main
+    
+    Especificar quantos commits quer voltar o projeto:
+    - git HEAD~1 (O número após o ~ especifica quantos commits voltar)
+    
+  OBS: Ao voltar versões antigas de commits para verificar códigos, é importante não realizar nenhuma alteração, pois ao voltar para a branch main as
+  alterações ficarão no "limbo", logo não é uma boa prática. Caso alguma modificação seja realizada, é importante desfazê-las utilizando:
+    - git reset
+    - git clean -df
+    - git checkout -- .
+    
+    
+---------------- IGNORAR ARQUIVOS QUE NÃO DESEJO QUE SEJAM SALVOS
+  
+  - git ignore 
+  É comum pesquisarmos o que desejamos ignorar de acordo com a ferramenta que estou trabalhando, por exemplo, se estou trabalhando com .net, basta ir no 
+google e pesquisar o que deve ser ignorado em um projeto .net, que ele já listará todos arquivos que devem e podem ser ignorados. Logo, não é necessário
+decorar.
+
+
+---------------- DESFAZER MODIFICAÇÕES NÃO SALVAS
+
+  Isso ocorre por exemplo quando faço várias alterações em um projeto e acabo me perdendo e decido voltar para o último commit:
+  
+  - git status
+  - git reset
+  - git clean -df
+  - git checkout -- .
+  
+  
+---------------- O QUE FAZER QUANDO ABRE O VIM
+
+  Habilitar modo de edição:
+  - i
+  
+  Sair do VIM, salvando as alterações:
+  <ESC>
+  :wq
+  <ENTER>
+  
+  Sair do VIM sem salvar as alterações:
+  <ESC>
+  :q!
+  <ENTER>
+  
+
+---------------- DELETAR ÚLTIMO COMMIT SEM DESFAZER AS ALTERAÇÕES NO ARQUIVO
+
+  - git reset --soft HEAD~1
+
+
+---------------- DELETAR ÚLTIMO COMMIT E DESFAZER AS ALTERAÇÕES NO ARQUIVO
+
+  - git reset --hard <codigo do commit>   // EXEMPLO: git reset --hard 81dd827a0886e246059c054b246ad886a15a71bd
+  - git reset --hard HEAD~1
+
+
+---------------- RESOLVENDO PULL COM CONFLITO
+
+  - Analise o código fonte
+  - Faça as edições necessárias
+  - Faça um novo commit
+
+  Link de ajuda >>>>    https://www.udemy.com/course/programacao-orientada-a-objetos-csharp/learn/lecture/31112146#reviews
+  
+  
+
+  
+
