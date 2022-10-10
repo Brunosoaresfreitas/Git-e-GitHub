@@ -1,0 +1,26 @@
+----------------- INICIALIZANDO UM REPOSITÓRIO E ENVIANDO UM COMMIT
+
+1° Passo: Escolher a pasta do computador onde os arquivos serão salvos/utilizados.
+
+  # git bash here
+  
+  - git init
+  - git add .
+  - git commit -m "Mensagem Explicativa"
+  - git branch -M main // Para que os commits sejam enviados para a branch Main
+  Caso esteja usando SSH:
+    - git remote add origin git@github.com:seuusuario/seureposito.git
+  Caso não esteja usando SSH:
+    - git remote add origin https://github.com/Brunosoaresfreitas/AulaGitHub // Copiar o link do repositório  
+  git push -u origin main // Isso na primeira vez que será realizado um push, nas próximas basta utilizar o comando git push
+  
+  
+
+----------------- CLONAR E MODIFICAR UM PROJETO/REPOSITÓRIO QUE VOCÊ TEM PERMISSÃO PARA ALTERAR
+
+  Caso tenha feito a configuração da chave SSH, utilizar da seguinte forma: (Caso não tenha feito copiar o link normalmente)
+  - git clone git@github.com:seuusuario/seurepositorio.git
+  - git add .
+  - git commit -m "Mensagem Explicativa"
+  - git push
+  
