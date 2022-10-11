@@ -15,6 +15,19 @@
   git push -u origin main // Isso na primeira vez que será realizado um push, nas próximas basta utilizar o comando git push
   
   
+----------------- VERIFICAR QUAL REPOSITÓRIO REMOTO O GIT ESTÁ APONTANDO
+
+  - git remote -v
+  
+  
+----------------- APONTAR O PROJETO PARA OUTRO REPOSITÓRIO REMOTO
+
+  Caso esteja usando SSH:
+    - git remote set-url origin git@github.com:seuusuario/seureposito.git
+  Caso não esteja usando SSH:
+    - git remote set-url origin https://github.com/Brunosoaresfreitas/AulaGitHub // Copiar o link do repositório
+
+
 ----------------- CLONAR E MODIFICAR UM PROJETO/REPOSITÓRIO QUE VOCÊ TEM PERMISSÃO PARA ALTERAR
 
   Caso tenha feito a configuração da chave SSH, utilizar da seguinte forma: (Caso não tenha feito copiar o link normalmente)
